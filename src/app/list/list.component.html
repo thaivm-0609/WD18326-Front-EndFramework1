@@ -1,0 +1,28 @@
+<div class="container">
+    <table class="table">
+      <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Gender</th>
+            <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for(item of listStudents; track item.name) {
+          <tr>
+            <td>{{ item.id }}</td>
+            <td>{{ item.name }}</td>
+            <td>{{ item.email }}</td>
+            <td>{{ item.gender }}</td>
+            <td>
+                <button class="btn btn-danger"><a [routerLink]="['/detail',item.id]">Detail</a></button>
+                <button class="btn btn-warning"><a href="">Edit</a></button>
+                <button class="btn btn-info"><a href="">Delete</a></button>
+            </td>
+          </tr>
+        }
+      </tbody>
+    </table>
+</div>
