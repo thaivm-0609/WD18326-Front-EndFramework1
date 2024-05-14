@@ -225,7 +225,14 @@
           <clipPath id="a"><path fill="#fff" d="M0 0h982v239H0z" /></clipPath>
         </defs>
       </svg>
-      <h1>Hello, {{ title }}</h1>
+      <!-- <h1>Hello, {{ title }}</h1> -->
+      <h1>Hello, {{ info.name }}</h1>
+      <h1>Hello, {{ info.email }}</h1>
+      <h1>Hello, {{ info.gender }}</h1>
+      <h1>Count: {{ count }}</h1>
+      <button (mouseover)="countClick()">Click</button>
+      <input type="text" [(ngModel)]="name">
+      <p>{{ name }}</p>
       <p>Congratulations! Your app is running. 🎉</p>
     </div>
     <div class="divider" role="separator" aria-label="Divider"></div>
@@ -320,6 +327,30 @@
           </svg>
         </a>
       </div>
+    </div>
+    <div>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Gender</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          @for(item of listStudents; track item.name) {
+            <tr>
+              <td>{{ item.name }}</td>
+              <td>{{ item.email }}</td>
+              <td>{{ item.gender }}</td>
+              <td>
+                <button [routerLink]="['/detail',item.name]">Detail</button>
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
     </div>
   </div>
 </main>
