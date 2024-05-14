@@ -17,7 +17,7 @@ export const routes: Routes = [
     },
     {
         //:tenParam
-        path: 'detail/:user', 
+        path: 'detail/:user/show', 
         component: DetailComponent,
         title: 'Detail',
     },
