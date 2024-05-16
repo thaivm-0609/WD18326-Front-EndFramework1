@@ -3,6 +3,10 @@ import { ListComponent } from './list/list.component';
 import { CreateComponent } from './create/create.component';
 import { DetailComponent } from './detail/detail.component';
 import { EditComponent } from './edit/edit.component';
+import { NotFoundComponent } from './not-found/not-found.component';
+import { AppComponent } from './app.component';
+import { ProjectComponent } from './project/project.component';
+import { UserComponent } from './user/user.component';
 
 export const routes: Routes = [
     {
@@ -25,6 +29,27 @@ export const routes: Routes = [
         path: 'edit',
         component: EditComponent,
         title: 'Edit',
+    },
+    {
+        path: 'admin',
+        children: [
+            {
+                path: 'projects',
+                children: [
+                    {
+                        path: 'list',
+                        component: ListComponent,
+                    }
+                ],
+            },
+            {
+                path: 'users',
+                component: UserComponent,
+            }
+        ]
+    },
+    {
+        path: '**', //xử lý khi ng dùng nhập vào một route không hợp lệ
+        component: NotFoundComponent,
     }
-
 ];
