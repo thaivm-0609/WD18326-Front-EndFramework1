@@ -1,7 +1,7 @@
 import { CanActivateFn } from '@angular/router';
 
 export const canActivateGuardGuard: CanActivateFn = (route, state) => {
-  let test = '1231';
+  let test = '123';
   if (test == '123') { 
     return true; //đk thỏa mãn thì được truy cập
   }

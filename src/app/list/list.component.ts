@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
 
@@ -8,31 +9,18 @@ import { RouterLink } from '@angular/router';
   templateUrl: './list.component.html',
   styleUrl: './list.component.css'
 })
+
 export class ListComponent {
-  listStudents = [
-    {
-      id: 1,
-      name: 'thaivm2',
-      email: 'thaivm2@fpt.edu.vn',
-      gender: 'male',
-    },
-    {
-      id: 2,
-      name: 'thaivm3',
-      email: 'thaivm3@fpt.edu.vn',
-      gender: 'male',
-    },
-    {
-      id: 3,
-      name: 'thaivm4',
-      email: 'thaivm4@fpt.edu.vn',
-      gender: 'female',
-    },
-    { 
-      id:4,
-      name: 'thaivm4',
-      email: 'thaivm4@fpt.edu.vn',
-      gender: 'female',
-    }
-  ]
+  listProjects: any;
+  constructor(private thaivm2:HttpClient) {}
+
+  ngOnInit(): void {
+    let apiUrl = 'http://localhost:3000/projects';
+
+    //cú pháp gửi http request
+    //this.HttpClient.method(apiUrl).subscribe( response => {})
+    this.thaivm2.get(apiUrl).subscribe(response => {
+      this.listProjects = response;
+    })
+  }
 }
