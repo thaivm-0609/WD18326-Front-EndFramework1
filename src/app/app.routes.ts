@@ -7,17 +7,22 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { AppComponent } from './app.component';
 import { ProjectComponent } from './project/project.component';
 import { UserComponent } from './user/user.component';
+import { canActivateGuardGuard } from './can-activate-guard.guard';
+import { canDeactivateGuard } from './can-deactivate.guard';
 
 export const routes: Routes = [
     {
         path: 'list',
         component: ListComponent,
         title: 'List',
+        canActivate: [canActivateGuardGuard] //khai báo guard bảo vệ cho route hiện tại
+        //typeGuard: [tenGuard]
     },
     {
         path: 'create',
         component: CreateComponent,
         title: 'Create',
+        canDeactivate: [canDeactivateGuard],
     },
     {
         //:tenParam
@@ -32,6 +37,7 @@ export const routes: Routes = [
     },
     {
         path: 'admin',
+        canActivateChild: [canActivateGuardGuard],
         children: [
             {
                 path: 'projects',
