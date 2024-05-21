@@ -22,11 +22,11 @@ export const routes: Routes = [
         path: 'create',
         component: CreateComponent,
         title: 'Create',
-        canDeactivate: [canDeactivateGuard],
+        // canDeactivate: [canDeactivateGuard],
     },
     {
         //:tenParam
-        path: 'detail/:user/show', 
+        path: 'detail/:user', 
         component: DetailComponent,
         title: 'Detail',
     },

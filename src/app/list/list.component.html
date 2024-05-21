@@ -19,9 +19,11 @@
           <td>{{ p.price }}</td>
           <td><img src="{{p.image}}" alt=""></td>
           <td>
-            <button>Delete</button>
-            <button>Detail</button>
-            <button>Edit</button>
+            <a class="btn btn-danger">Delete</a>
+            <a class="btn btn-info mx-2" [routerLink]="['/detail',p.id]">
+              Detail
+            </a>
+            <a class="btn btn-warning">Edit</a>
           </td>
         </tr>
       }

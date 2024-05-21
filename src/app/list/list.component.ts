@@ -15,7 +15,7 @@ export class ListComponent {
   constructor(private thaivm2:HttpClient) {}
 
   ngOnInit(): void {
-    let apiUrl = 'http://localhost:3000/projects';
+    let apiUrl = 'http://localhost:3000/projects'; //khai báo apiUrl
 
     //cú pháp gửi http request
     //this.HttpClient.method(apiUrl).subscribe( response => {})
