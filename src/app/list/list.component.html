@@ -19,7 +19,7 @@
           <td>{{ p.price }}</td>
           <td><img src="{{p.image}}" alt=""></td>
           <td>
-            <a class="btn btn-danger">Delete</a>
+            <a class="btn btn-danger" (click)="onDelete(p.id)">Delete</a>
             <a class="btn btn-info mx-2" [routerLink]="['/detail',p.id]">
               Detail
             </a>
