@@ -31,7 +31,7 @@ export const routes: Routes = [
         title: 'Detail',
     },
     {
-        path: 'edit',
+        path: 'edit/:project',
         component: EditComponent,
         title: 'Edit',
     },

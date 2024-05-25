@@ -15,12 +15,13 @@ export class CreateComponent {
 
   constructor(
     private http:HttpClient,
-    private router:Router
+    private router:Router //sử dụng hàm navigate để redirect website
   ) {}
-  onCreate(data: any): void {
+
+  onCreate(data: any): void { //data là dữ liệu người dùng nhập vào form
     this.http.post(
-      this.apiUrl,
-      data
+      this.apiUrl, 
+      data 
     ).subscribe(res => {
       alert('Thêm mới thành công');
       this.router.navigate(['/list']);
