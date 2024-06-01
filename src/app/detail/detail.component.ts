@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { ProjectService } from '../project.service';
 
 @Component({
   selector: 'app-detail',
@@ -12,16 +13,23 @@ import { ActivatedRoute } from '@angular/router';
 export class DetailComponent {
   id = 0;
   project: any = {};
-  constructor(private route:ActivatedRoute, private http:HttpClient) {
+  constructor(
+    private route:ActivatedRoute, 
+    // private http:HttpClient
+    private service:ProjectService
+  ) {
     this.id = this.route.snapshot.params['user'];
   }
 
   ngOnInit(): void {
-    let apiUrl = 'http://localhost:3000/projects/'+this.id; //khai báo apiUrl
+    // let apiUrl = 'http://localhost:3000/projects/'+this.id; //khai báo apiUrl
 
     //gửi request lên json-server để lấy thông tin
-    this.http.get(apiUrl).subscribe(res => {
-      this.project = res; //gán dữ liệu json-server trả về vào 1 biến
+    // this.http.get(apiUrl).subscribe(res => {
+    //   this.project = res; //gán dữ liệu json-server trả về vào 1 biến
+    // })
+    this.service.getDetail(this.id).subscribe(res => {
+      this.project = res;
     })
   }
 }

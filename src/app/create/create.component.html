@@ -3,13 +3,15 @@
     <div>
         <label for="" class="form-label">Name</label>
         <input type="text" class="form-control" #errorName="ngModel" name="name" ngModel required minlength="3" maxlength="10">
-        <p *ngIf="errorName.invalid" class="text-danger"> 
+        <!-- dirty: kiểm tra xem ô input đã được thay 
+        đổi nội dung hay chưa? -->
+        <p *ngIf="errorName.dirty && errorName.invalid" class="text-danger"> 
             Dữ liệu nhập vào không hợp lệ 
         </p>
-        <p *ngIf="errorName.errors?.['required']" class="text-danger">
+        <p *ngIf="errorName.dirty && errorName.errors?.['required']" class="text-danger">
             Tên không được bỏ trống
         </p>
-        <p *ngIf="errorName.errors?.['minlength']" class="text-danger">
+        <p *ngIf="errorName.dirty && errorName.errors?.['minlength']" class="text-danger">
             Tên không được ngắn hơn 3 ký tự
         </p>
     </div>

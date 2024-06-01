@@ -1,8 +1,8 @@
 import { CommonModule } from '@angular/common';
-import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ProjectService } from '../project.service';
 
 @Component({
   selector: 'app-create',
@@ -12,10 +12,11 @@ import { Router } from '@angular/router';
   styleUrl: './create.component.css'
 })
 export class CreateComponent {
-  apiUrl = 'http://localhost:3000/projects';
+  // apiUrl = 'http://localhost:3000/projects';
 
   constructor(
-    private http:HttpClient,
+    // private http:HttpClient,
+    private service:ProjectService,
     private router:Router //sử dụng hàm navigate để redirect website
   ) {}
 
@@ -31,10 +32,11 @@ export class CreateComponent {
 
     //kiểm tra nếu isValid = true thì mới thực hiện gửi http request
     if (isValid) { 
-      this.http.post(
-        this.apiUrl, 
-        data 
-      ).subscribe(res => {
+      // this.http.post(this.apiUrl,data).subscribe(res => {
+      //   alert('Thêm mới thành công');
+      //   this.router.navigate(['/list']);
+      // })
+      this.service.create(data).subscribe( res => {
         alert('Thêm mới thành công');
         this.router.navigate(['/list']);
       })
