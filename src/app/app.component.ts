@@ -1,5 +1,5 @@
 import { Component } from '@angular/core'; //import component 
-import { RouterLink, RouterOutlet } from '@angular/router';
+import { RouterLink, RouterOutlet, Router } from '@angular/router';
 import { FormsModule } from '@angular/forms'; //import FormsModule
 @Component({
   selector: 'app-root',
@@ -26,4 +26,10 @@ export class AppComponent {
     this.count = this.count + 1; //tăng giá trị của count lên 1 đơn vị
   }
   
+  logout(): void {
+    const userinfo = localStorage.getItem('user');
+    if (userinfo !== null) { //đang tồn tại biến user trong localStorage
+      localStorage.removeItem('user'); //xóa user khỏi localStorage-> kết thúc phiên đăng nhập
+    }
+  }
 }
